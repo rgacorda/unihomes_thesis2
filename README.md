@@ -42,21 +42,36 @@ npm i
 ```
 
 1. Connect to Project
-Start by connecting to your existing project and then run "vercel link" in the CLI to link to the project locally.
+Start by connecting to your existing project and then run code in the CLI to link to the project locally.
+```bash
+vercel link
+```
 If you don’t already have a project to connect to, you can get started with a Postgres template.
 
 2. Pull your latest environment variables
-Run "vercel env pull .env.development.local" to make the latest environment variables available to your project locally.
+Run to make the latest environment variables available to your project locally.
+```bash
+vercel env pull .env.development.local
+```
+And rename env file to .env
 
 3. Pushing schema updates
-Run "npx prisma db push", after editing prisma/schema.prisma file.
+Run code below, after editing prisma/schema.prisma file.
+```bash
+npx prisma db push
+```
 
 4. Pulling schema updates
-Run "npx prisma pull"
+```bash
+npx npx prisma pull
+```
 
 5. Editing Data on Database
-- Run "npx prisma studio", to either add data directly to the database.
-- You can add data on prisma/seed.ts file and run "npm run seed"
+- To add data directly to the database.
+```bash
+npx npx prisma studio
+```
+- Or, you can add data on prisma/seed.ts file and run "npm run seed"
 
 
 
