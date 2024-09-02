@@ -34,3 +34,29 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Prisma Database
+1. Install Dependencies
+```bash
+npm i
+```
+
+1. Connect to Project
+Start by connecting to your existing project and then run "vercel link" in the CLI to link to the project locally.
+If you don’t already have a project to connect to, you can get started with a Postgres template.
+
+2. Pull your latest environment variables
+Run "vercel env pull .env.development.local" to make the latest environment variables available to your project locally.
+
+3. Pushing schema updates
+Run "npx prisma db push", after editing prisma/schema.prisma file.
+
+4. Pulling schema updates
+Run "npx prisma pull"
+
+5. Editing Data on Database
+- Run "npx prisma studio", to either add data directly to the database.
+- You can add data on prisma/seed.ts file and run "npm run seed"
+
+
+
