@@ -14,19 +14,7 @@ datasource db {
 //Database Models can be placed here
 //"?" means optional
 
-model BookingInformation {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  //Add more fields here
-}
 
-model Message {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  //Add more fields here
-}
 
 model Review {
   id        Int      @id @default(autoincrement())
@@ -157,3 +145,5 @@ model RoomAmenitiesJunction {
   room        RoomListing @relation(fields: [roomId], references: [id])
   amenities   Amenities   @relation(fields: [amenitiesId], references: [id])
 }
+
+//Kulang ng conversation schema
