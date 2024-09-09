@@ -22,7 +22,10 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/import";
 
-export const ButtonIcon = ({ onClose }) => {
+type ButtonIconProps = {
+  onClose: () => void;
+}
+export const ButtonIcon = ({ onClose }:ButtonIconProps) => {
   return (
     <Button
       size="icon"
