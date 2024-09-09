@@ -1,5 +1,4 @@
 "use client";
-import { useRouter } from "next/navigation";
 import {
   Button,
   AvatarImage,
@@ -8,14 +7,11 @@ import {
   Input,
   Badge,
 } from "@/components/ui/import";
-import { useState } from "react";
 import { DatePickerForm } from "@/components/ui/DatePickerForm";
 
 export default function Profile() {
-  const [selected, setSelected] = useState("profile");
-  const router = useRouter();
   return (
-    <div className="w-[750px] pl-[35px] pt-[14px]">
+    <div className="w-[750px] pl-[15px] pt-[14px]">
       <div className="text-[40px] font-bold flex justify-between">
         <div>
           <h1>Profile</h1>

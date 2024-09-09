@@ -23,11 +23,9 @@ export default function Main() {
         <div className="flex h-[110px]">
           <h1 className="text-[65px] font-bold">My Account</h1>
         </div>
-
+        <hr className="w-[370px] mb-[10px]" />
         <div className="flex h-3/4">
           <div className="flex flex-col w-[450px] mb-[200px] pt-2 p-2">
-            <hr className="w-[390px] mb-[10px]" />
-
             <div>
               <Button
                 onClick={() => handleNavigation("profile")}
@@ -56,8 +54,6 @@ export default function Main() {
               </Button>
             </div>
           </div>
-
-          {/* Render content based on route */}
           <div className="flex-1">
             {page === "profile" && <Profile />}
             {page === "hosting" && <Hosting />}

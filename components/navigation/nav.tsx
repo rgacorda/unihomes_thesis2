@@ -40,7 +40,7 @@ export const ButtonIcon = ({ onClose }:ButtonIconProps) => {
 const Nav = () => {
   const [isClient, setIsClient] = useState(true);
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false); // State to handle background change on scroll
+  const [scrolled, setScrolled] = useState(false); 
 
   const handleClose = () => {
     setOpen(false);
