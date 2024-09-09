@@ -1,149 +1,16 @@
-// schema.prisma
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-
-//Database Models can be placed here
-//"?" means optional
-
-
-
-model Review {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  client    ClientAccount @relation(fields: [clientId], references: [id]) //this is an example of foreign key reference
-  clientId  Int //this is an where the foreign key will be located
-  company   AccommodationAccount @relation(fields: [companyId], references: [id])
-  companyId Int
-  rating    Int
-  comment   String
+model Client_Account {
+  id       String @id
+  name     String
+  email    String
+  password String
 }
-
-model ClientAccount {
-  id            Int      @id @default(autoincrement())
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  profilePicture String?
-  name          String
-  cpNumber      String
-  email         String   @unique
-  password      String
-  bookings      Booking[]
-  reviews       Review[]
-}
-
-model AccommodationAccount {
-  id              Int      @id @default(autoincrement())
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  logo            String?
-  name            String
-  description     String
-  cpNumber        String
-  email           String   @unique
-  password        String
-  branches        Branch[]
-  reviews         Review[]
-  managerAccounts ManagerAccount[]
-}
-
-model ManagerAccount {
-  id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  name        String
-  cpNumber    String
-  email       String   @unique
-  password    String
-  accommodationId   Int
-  accommodation     AccommodationAccount @relation(fields: [accommodationId], references: [id])
-}
-
-model Booking {
-  id           Int      @id @default(autoincrement())
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  status       String
-  isPaid       Boolean
-  referenceNum String
-  clientId     Int
-  roomId       Int
-  client       ClientAccount @relation(fields: [clientId], references: [id])
-  room         RoomListing    @relation(fields: [roomId], references: [id])
-}
-
-model RoomListing {
-  id             Int      @id @default(autoincrement())
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-  images         String[] //this shows array of strings
-  code           String
-  size           Int
-  occupationStatus Boolean
-  occupationNumber Int
-  branchId       Int
-  branch         Branch @relation(fields: [branchId], references: [id])
-  bookings       Booking[]
-  lifestyles     LifestyleRoomJunction[]
-  amenities      RoomAmenitiesJunction[]
-}
-
-model Branch {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  code      String
-  address   String
-  companyId Int
-  company   AccommodationAccount @relation(fields: [companyId], references: [id])
-  rooms     RoomListing[]
-}
-
-model Lifestyle {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  name      String
-  logo      String?
-  rooms     LifestyleRoomJunction[]
-}
-
-model LifestyleRoomJunction {
-  id           Int      @id @default(autoincrement())
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  roomId       Int
-  lifestyleId  Int
-  room         RoomListing @relation(fields: [roomId], references: [id])
-  lifestyle    Lifestyle   @relation(fields: [lifestyleId], references: [id])
-}
-
-model Amenities {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  name      String
-  logo      String?
-  rooms     RoomAmenitiesJunction[]
-}
-
-model RoomAmenitiesJunction {
-  id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  roomId      Int
-  amenitiesId Int
-  room        RoomListing @relation(fields: [roomId], references: [id])
-  amenities   Amenities   @relation(fields: [amenitiesId], references: [id])
-}
-
-//Kulang ng conversation schema
