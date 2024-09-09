@@ -6,7 +6,7 @@ export default function Main() {
       <main className="flex flex-col md:flex-row justify-between min-h-[828px] min-w-[1900px]">
         <div className="flex flex-col items-start justify-center w-full w-[40%] p-2 h-[50%] ml-5 ml-[50px] mt-[250px]">
           <div className="text-black p-2">
-            <h1 className="font-extrabold text-4xl text-6xl p-2 md:text-[70px]">
+            <h1 className="font-extrabold text-4xl md:text-6xl p-2 md:text-[70px]">
               Welcome to Our
             </h1>
             <h1 className="font-extrabold text-4xl md:text-6xl p-2 md:text-[70px]">
