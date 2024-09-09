@@ -19,3 +19,5 @@ export {
 } from "./alert-dialog";
 export { Input } from "@/components/ui/input";
 export { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+export { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+export { Badge } from "@/components/ui/badge";
