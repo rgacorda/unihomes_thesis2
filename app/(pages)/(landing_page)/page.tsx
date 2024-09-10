@@ -1,9 +1,9 @@
 import Nav from "@/components/navigation/nav";
-import Main from "@/app/(pages)/landing_page/sections/main";
-import HowItWorksSection from "@/app/(pages)/landing_page/sections/howitworks";
-import StatsSection from "@/app/(pages)/landing_page/sections/stats";
-import ClientsSection from "@/app/(pages)/landing_page/sections/clients";
-import Footer from "@/app/(pages)/landing_page/sections/footer";
+import Main from "@/app/(pages)/(landing_page)/sections/main";
+import HowItWorksSection from "@/app/(pages)/(landing_page)/sections/howitworks";
+import StatsSection from "@/app/(pages)/(landing_page)/sections/stats";
+import ClientsSection from "@/app/(pages)/(landing_page)/sections/clients";
+import Footer from "@/app/(pages)/(landing_page)/sections/footer";
 
 export default function Home() {
   return (
