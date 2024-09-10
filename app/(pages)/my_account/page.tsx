@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import Nav from "@/components/navigation/nav";
 import { Button } from "@/components/ui/import";
 import { User } from "lucide-react";
@@ -10,11 +11,6 @@ import Hosting from "@/app/(pages)/my_account/sections/hosting";
 export default function Main() {
   const router = useRouter();
   const searchParams = useSearchParams();
-
-  if (!searchParams) {
-    throw new Response("Loading...", { status: 404 });
-  }
-
   const page = searchParams.get("page") || "profile";
 
   const handleNavigation = (route: string) => {
@@ -32,6 +28,7 @@ export default function Main() {
         <div className="flex h-3/4">
           <div className="flex flex-col w-[450px] mb-[200px] pt-2 p-2">
             <div>
+              <Suspense>
               <Button
                 onClick={() => handleNavigation("profile")}
                 className={`flex items-center justify-start w-[377px] h-[50px] rounded-lg ${
@@ -43,9 +40,11 @@ export default function Main() {
                 <User className="mr-2 w-5 h-5" />
                 Profile
               </Button>
+              </Suspense>
             </div>
 
             <div className="mt-4">
+            <Suspense>
               <Button
                 onClick={() => handleNavigation("hosting")}
                 className={`flex items-center justify-start w-[377px] h-[50px] rounded-lg ${
@@ -57,15 +56,17 @@ export default function Main() {
                 <User className="mr-2 w-5 h-5" />
                 Hosting Verification
               </Button>
+              </Suspense>
             </div>
           </div>
           <div className="flex-1">
+          <Suspense>
             {page === "profile" && <Profile />}
             {page === "hosting" && <Hosting />}
+            </Suspense>
           </div>
         </div>
       </div>
     </div>
   );
 }
-
