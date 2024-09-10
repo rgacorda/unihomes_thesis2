@@ -10,6 +10,11 @@ import Hosting from "@/app/(pages)/my_account/sections/hosting";
 export default function Main() {
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  if (!searchParams) {
+    throw new Response("Loading...", { status: 404 });
+  }
+
   const page = searchParams.get("page") || "profile";
 
   const handleNavigation = (route: string) => {
@@ -63,3 +68,4 @@ export default function Main() {
     </div>
   );
 }
+
